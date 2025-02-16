@@ -1,0 +1,67 @@
+import streamlit as st
+import json
+from PIL import Image
+import pytesseract
+from pdf2image import convert_from_path
+
+# ---- Patient Bio & History ----
+st.title("Iris Patient Onboarding")
+
+st.header("Step 1: Patient Bio & History")
+
+name = st.text_input("Full Name")
+age = st.number_input("Age", min_value=0, max_value=120)
+gender = st.radio("Gender", ["Male", "Female", "Other"])
+condition = st.selectbox("Primary Condition", ["Cardiomegaly", "Fibrosis", "Cancer", "Other"])
+comorbidities = st.multiselect("Comorbidities", ["Diabetes", "Hypertension", "Kidney Disease"])
+medications = st.text_area("Current Medications")
+
+st.subheader("Emergency Contact")
+emergency_name = st.text_input("Emergency Contact Name")
+emergency_phone = st.text_input("Emergency Contact Phone")
+
+if st.button("Submit & Continue"):
+    profile = {
+        "name": name,
+        "age": age,
+        "gender": gender,
+        "primary_condition": condition,
+        "comorbidities": comorbidities,
+        "medications": medications,
+        "emergency_contact": {
+            "name": emergency_name,
+            "phone": emergency_phone
+        }
+    }
+    st.success("Profile Created! Proceed to Medical Uploads.")
+    st.json(profile)
+
+# ---- CXR & DICOM Upload ----
+st.header("Step 2: Upload Chest X-ray / DICOM for AI Analysis")
+
+uploaded_cxr = st.file_uploader("Upload X-ray (PNG, JPG, DICOM)", type=["png", "jpg", "dcm"])
+if uploaded_cxr:
+    img = Image.open(uploaded_cxr)
+    st.image(uploaded_cxr, caption="Uploaded X-ray", use_column_width=True)
+    st.warning("This is a generic response. A doctor will review this manually.")
+
+# ---- Prescription Upload & OCR Analysis ----
+st.header("Step 3: Upload Prescription for Contraindication Analysis")
+
+uploaded_rx = st.file_uploader("Upload Prescription (PDF, JPG, PNG)", type=["pdf", "jpg", "png"])
+if uploaded_rx:
+    if uploaded_rx.type == "application/pdf":
+        image = convert_from_path(uploaded_rx)[0]
+    else:
+        image = Image.open(uploaded_rx)
+    
+    text = pytesseract.image_to_string(image)
+    st.write("Extracted Text:", text)
+
+    contraindications = ["Aspirin + Warfarin", "Metformin + Contrast Dye"]
+    flagged = [drug for drug in contraindications if drug in text]
+
+    if flagged:
+        st.error(f"Potential Contraindications Found: {flagged}")
+    else:
+        st.success("No contraindications detected.")
