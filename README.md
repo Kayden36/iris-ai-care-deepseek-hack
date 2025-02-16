@@ -7,14 +7,17 @@ IRIS AI is an empathetic AI-powered palliative care platform designed to provide
 IRIS AI employs a swarm of microservices, leveraging Streamlit for a seamless user experience. Our architecture features:
 
 ## Edge LLM: A cutting-edge Large Language Model (LLM) that enables bidirectional intelligence hierarchy.
+
 ### Microservices Swarm: 
 A collection of specialized microservices that work in tandem to provide a comprehensive AI experience.
+
 ### Streamlit:  
 A Python-based framework that enables the creation of custom web applications with a focus on data science and machine learning.
 
 ## Bidirectional Intelligence Hierarchy
 Our Edge LLM facilitates a bidirectional intelligence hierarchy, enabling:
-
+## Tesseract 
+we use Tesseract OCR to predict and scan Prescriptions for contraindications so that RXs can be safely dispensed and taken by those at end of life treatment at home. Especially where family members are not well versions.
 ## Bottom-up Learning: 
 Microservices can learn from user interactions and adapt to their needs.
 ## Top-down Guidance
