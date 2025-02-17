@@ -1,6 +1,16 @@
 # iris-ai-care-deepseek-hack
 IRIS AI End of Life Care Agents
-# Description
+# My Project
+
+This is my project description.
+
+## Screenshot
+
+Here’s a screenshot of the app:
+
+![App Screenshot](assets/screenshot.png)
+
+For more information, visit our [project website](https://iris.gemgrocery.com).# Description
 IRIS AI is an empathetic AI-powered palliative care platform designed to provide personalized support and guidance to patients, families, and caregivers.
 
 # Architecture
