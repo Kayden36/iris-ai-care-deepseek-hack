@@ -1,54 +1,38 @@
 import streamlit as st
 from PIL import Image
-import openai
 import io
 
-#configure the Deepseek API
-client = openai.OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key="put your api key"
-)
-
-#function to process inputs and generate a response
-def process_inputs(doc_content, image, text):
-    prompt = "Process the following inputs and provide insights: "
-    if doc_content:
-        prompt += f"\nDocument Content : {doc_content}"
-    if image:
-        prompt += f"\nDocument Content : {image}"
-    if text:
-        prompt += f"\nUser Input Text: {text}"
-
-    messages = [{"role": "user", "content": prompt}]
-    completion = client.chat.completions.create(
-        extra_headers = {
-            "HTTP-Referer": "your site_url"
-        },
-        extra_body={},
-        model="deepseek/deepseek-chat:free",
-        messages =messages
-    )
-    return completion.choices[0].message.content
-
-#Streamlit UI
+# Streamlit UI
 st.title("AI-powered Document and Image Processor")
 
-uploaded_Doc = st.file_uploader("Upload a Document")
-uploaded_image = st.file_uploader("Upload an Image")
+# Upload fields for document and image
+uploaded_doc = st.file_uploader("Upload a Document", type="txt")
+uploaded_image = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
 user_text = st.text_area("Enter additional text")
 
-
-if uploaded_Doc is not None:
-    doc_content = uploaded_Doc.read().decode("utf-8")
-else: 
+# Process the document if uploaded
+if uploaded_doc is not None:
+    doc_content = uploaded_doc.read().decode("utf-8")
+else:
     doc_content = ""
 
+# Process the image if uploaded
 if uploaded_image is not None:
     image = Image.open(uploaded_image)
     st.image(image, caption="Uploaded Image", use_container_width=True)
 else:
-    image=None
+    image = None
+
+# Process button
 if st.button("Process"):
-    response = process_inputs(doc_content, image, user_text)
-    st.subheader("AI Response: ")
-    st.write(response)
+    if uploaded_doc or uploaded_image or user_text:
+        # COMMENTED OUT API CALL: This is where you would integrate your API for processing
+        # response = process_inputs(doc_content, image, user_text)
+        
+        # For now, simulate a response
+        response = "This is where the processed result will appear."
+
+        st.subheader("AI Response:")
+        st.write(response)
+    else:
+        st.warning("Please upload a document, an image, or enter some text to process.")
