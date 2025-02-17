@@ -9,8 +9,9 @@ This is my project description.
 Here’s a screenshot of the app:
 ![Screenshot](Media/Screenshot.jpg)
 
-For more information, visit our [project website](https://iris.gemgrocery.com).# Description
-IRIS AI is an empathetic AI-powered palliative care platform designed to provide personalized support and guidance to patients, families, and caregivers.
+For more information, visit our [project website](https://iris.gemgrocery.com).
+# Description
+### IRIS AI is an empathetic AI-powered palliative care platform designed to provide personalized support and guidance to terminal patients, the aged and their families.
 
 # Architecture
 IRIS AI employs a swarm of microservices, leveraging Streamlit for a seamless user experience. Our architecture features:
