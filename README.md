@@ -1,13 +1,11 @@
 # iris-ai-care-deepseek-hack
-IRIS AI End of Life Care Agents
-# My Project
-This is my project description.
-## Screenshot
+# IRIS End of Life AI Care Agents
+Screenshot
 Here’s a screenshot of the app:
 ![Screenshot](Media/Screenshot.jpg)
 For more information, visit our [project website](https://iris.gemgrocery.com).
 ## Description
-### IRIS AI is an empathetic AI-powered palliative care platform designed to provide personalized support and guidance to terminal patients, the aged and their families.
+IRIS AI is an empathetic AI-powered palliative care platform designed to provide personalized support and guidance to terminal patients, the aged and their families.
 
 # Features
 ## Rx Contraindications Checking Tesseract Microservice
@@ -46,12 +44,12 @@ The Edge LLM provides strategic and tactic requests to the microservices swarm
 ## AIML API
 Powers all microservices for special patient cases, send offs & retrieval such as CXR Disease progression Pretrained models. 
 
-### JavaScript/Php
-### NLU/NLP
-### LLM
-### Python
-### Streamlit microservices 
-### Machine Learning Models
+- JavaScript/Php
+- NLU/NLP
+- LLM
+- Python
+- Streamlit microservices 
+- Machine Learning Models
 
 # Dependencies 
 - AIML API
