@@ -46,12 +46,12 @@ The Edge LLM provides strategic and tactic requests to the microservices swarm
 ## AIML API
 Powers all microservices for special patient cases, send offs & retrieval such as CXR Disease progression Pretrained models. 
 
-## JavaScript/Php
-## NLU/NLP
-## LLM
-## Python
-## Streamlit microservices 
-## Machine Learning Models
+### JavaScript/Php
+### NLU/NLP
+### LLM
+### Python
+### Streamlit microservices 
+### Machine Learning Models
 
 # Dependencies 
 - AIML API
